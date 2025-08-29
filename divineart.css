@@ -1,0 +1,141 @@
+html {
+    background: repeating-linear-gradient(
+    33deg,
+    #000000,
+    #000000 18px,
+    #380206 2px,
+    #380206 20px
+    );
+}
+
+div[name="chapter"]{
+    font-family: "DejaVu Serif";
+    margin: 5%;
+    background-color: rgb(245, 202, 202);
+    color: black;
+    border-radius: 30px;
+    padding: 10%;
+    padding-bottom: 60px;
+    padding-top: 10px;
+}
+
+div[name="text"]{
+    text-align: left;
+}
+
+br {
+    display: block;
+    margin: 10px;
+}
+
+ul[name="navbar"] {
+    font-family: "Greenos";
+    text-align: left;
+    font-size: 24pt;
+    font-variant: small-caps;
+    color: white;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+h1 {
+    font-family: "Greenos";
+    color: #FF172A;
+    font-size: 50pt;
+    font-variant: small-caps;
+    margin-bottom: -50pt;
+}
+
+h2 {
+    font-family: "Greenos";
+    color: #FF172A;
+    font-size: 40pt;
+    font-variant: small-caps;
+    margin-bottom: -40pt;
+}
+
+h3 {
+    font-family: "Greenos";
+    color: #FF172A;
+    font-size: 32pt;
+    font-variant: small-caps;
+}
+
+h4 {
+    font-family: "DejaVu Serif";
+    color: #FF172A;
+    font-size: 32pt;
+    font-variant: small-caps;
+    margin-bottom: -32pt;
+}
+
+h5 {
+    font-family: "DejaVu Serif";
+    color: #000000;
+    font-size: 24pt;
+    font-variant: small-caps;
+}
+
+h6 {
+    font-family: "Greenos";
+    color: #FF172A;
+    font-size: 26pt;
+    font-variant: small-caps;
+    margin-bottom: -20pt;
+    padding-left: 18%;
+    padding-right: 18%;
+    font-style: italic;
+}
+
+body {
+    text-align: center;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    font-size: 18pt;
+    text-wrap-mode: nowrap;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+li[name="navbar_item"] {
+    display:inline;
+    align-content: center;
+    padding-right: 20px;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    text-decoration-line: none;
+}
+
+a:hover {
+    color: rgb(216, 139, 164);
+}
+
+@font-face {
+    font-family: "Greenos";
+    src: url("Greenos-8MpL0.ttf");
+}
+
+@font-face {
+    font-family: "DejaVu Serif";
+    src: url("DejaVuSerif.ttf");
+}

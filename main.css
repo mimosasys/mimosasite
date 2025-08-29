@@ -1,0 +1,105 @@
+body {
+    font-family: "Tolman";
+    font-size: 18pt;
+}
+
+div[name="header"] {
+    width: 100%;
+    margin-top:20px;
+    box-shadow: 0px -30px 20px 60px rgb(172, 41, 113);
+    font-weight:bolder;
+}
+
+@keyframes rainbow {
+    0% {color:#E15353;}
+    20% {color: #BED466;}
+    40% {color: #5BAE78;}
+    60% {color: #756BCC;}
+    80% {color: #D878A5;}
+    100% {color: #E15353;}
+}
+
+@keyframes rotate {
+    0% {transform: rotate3d(0,1,0,0)}
+    100% {transform: rotate3d(0,1,0,360deg)}
+}
+
+.main {
+    margin-top: 50px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    border-style: inset;
+    border-width: 5px;
+    border-radius: 20px;
+    box-shadow: inset 0px 0px 20px 0px rgba(0,0,0,0.4);
+}
+
+header {
+    text-align: center;
+    color:blue;
+    animation-name: rainbow;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    background-color: rgb(172, 41, 113);
+    text-decoration-line:underline;
+    font-weight:bolder;
+    padding:5px;
+}
+
+ul[name="navbar"] {
+    font-family: "HomeVideo";
+    text-align: center;
+    font-size: 24pt;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    font-size: 18pt;
+}
+
+.dropdown-content a {
+    background-color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+li[name="navbar_item"] {
+    display:inline;
+    align-content: center;
+}
+
+a {
+    color: black;
+    text-decoration-line: none;
+}
+
+a:hover {
+    color: palevioletred;
+    background-color: black;
+}
+
+@font-face {
+    font-family: "Tolman";
+    src: url("Tolman.ttf");
+}
+
+@font-face {
+    font-family: "HomeVideo";
+    src: url("HomeVideo-Regular.ttf");
+}
+
+@font-face {
+    font-family: "HomeVideo-Bold";
+    src: url("HomeVideo-Bold.ttf");
+}
