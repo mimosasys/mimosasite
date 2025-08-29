@@ -1,9 +1,38 @@
-html, body {
+html {
     background-image: url("arrow heart.png");
     background-repeat: repeat;
+    background-size: 10%;
     height: 100%;
 }
 
 .fullheight {
     height: 100%;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Vigofam";
+    font-size: 40pt;
+    color: #DBB030;
+}
+
+h2 {
+    text-align: center;
+    font-family: "Vigofam";
+    font-size: 24pt;
+    font-style: italic;
+    color: #DBB030;
+}
+
+h3 {
+    text-align: center;
+    font-family: "Vigofam";
+    font-size: 16pt;
+    font-style: italic;
+    color: #DBB030;
+}
+
+@font-face {
+    font-family: "Vigofam";
+    src: url("Vigofam.ttf");
 }

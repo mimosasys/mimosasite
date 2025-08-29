@@ -94,6 +94,9 @@ ul[name="navbar"] {
     display: none;
     position: absolute;
     font-size: 18pt;
+    text-wrap: nowrap;
+    text-align: left;
+    padding-left: 10%;
 }
 
 .dropdown-content a {
@@ -106,6 +109,7 @@ ul[name="navbar"] {
 li[name="navbar_item"] {
     display:inline;
     align-content: center;
+    padding-inline: 5%;
 }
 
 a {
