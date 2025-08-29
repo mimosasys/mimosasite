@@ -155,50 +155,21 @@
             <br><br>
             <hr>
             <br>
-            <div class="computer" id="computer_risotto1">
-                
+            <div name="computer">
+                Risotto,
+                <br><br>I hope this message finds you well. I apologise for the short notice, but another mission has come up for your squadra. 
+                <br><br>As of three days ago, the capo of the Divisione Recupero Crediti, known as Bistecca, was found dead, seemingly killed by the other members of the Divisione out of hopes of overthrowing him. Their names are Orzo, Finocchio, and Rucola.
+                <br><br>I view this as a direct violation of my orders, and as such the three of them are now considered traitors to the organisation.
+                <br><br>Your squadra must now find the true reason behind Bistecca’s death, and deal with the culprits. I am aware you aren’t exactly detectives, but I wouldn’t trust anyone else with such a task. As you should be very aware, I take traitorous matters very seriously. I expect you should feel the same.
+                <br><br>The last known residence of the three traitors was Montelupo Fiorentino, a commune roughly 20 km south-east of Fiorenze. I expect you to assign three members of your team to this task, and to arrive there within the next two or three days.
+                <br><br>This is an urgent matter. Do not hesitate. I will contact you if there are any updates to the situation. Do not try to contact any members of Passione in Montelupo Fiorentino. We cannot allow the traitors to find out about your investigation.
+                <br><br>I expect this will go smoothly. Do not disappoint me again, Risotto. I will communicate with you again soon.
+                <br><br>
+                <br><br>Boss.
             </div>
         </div>
     </div>
     
 </body>
-
-<script>
-    const risotto1 = document.getElementById('computer_risotto1');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // The element is now visible on the screen
-                console.log('Element is on screen!');
-                // Call your desired function here
-                typeWriter();
-                // Optionally, stop observing once it's visible
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        // Options for the observer (optional)
-        root: null, // defaults to the viewport
-        rootMargin: '0px', // margin around the root
-        threshold: 0.1 // percentage of the target element visible to trigger callback
-    });
-
-    // Start observing the element
-    observer.observe(risotto1);
-
-
-    var i = 0;
-    var txt = "Risotto,\nI hope this message finds you well. I apologise for the short notice, but another mission has come up for your squadra.\nAs of three days ago, the capo of the Divisione Recupero Crediti, known as Bistecca, was found dead, seemingly killed by the other members of the Divisione out of hopes of overthrowing him. Their names are Orzo, Finocchio, and Rucola.\nI view this as a direct violation of my orders, and as such the three of them are now considered traitors to the organisation.\nYour squadra must now find the true reason behind Bistecca’s death, and deal with the culprits. I am aware you aren’t exactly detectives, but I wouldn’t trust anyone else with such a task. As you should be very aware, I take traitorous matters very seriously. I expect you should feel the same.\nThe last known residence of the three traitors was Montelupo Fiorentino, a commune roughly 20 km south-east of Fiorenze. I expect you to assign three members of your team to this task, and to arrive there within the next two or three days.\nThis is an urgent matter. Do not hesitate. I will contact you if there are any updates to the situation. Do not try to contact any members of Passione in Montelupo Fiorentino. We cannot allow the traitors to find out about your investigation.\nI expect this will go smoothly. Do not disappoint me again, Risotto. I will communicate with you again soon.\n\nBoss.";
-    var speed = 50;
-
-    function typeWriter() {
-        if (i < txt.length) {
-            document.getElementById("demo").innerHTML += txt.charAt(i);
-            i++;
-            setTimeout(typeWriter, speed);
-        }
-    }
-</script>
 
 </html>

@@ -76,9 +76,12 @@ div[name="text"]{
     font-size: 14pt;
 }
 
-computer {
+div[name="computer"] {
     font-family: "Terminal F4";
-
+    color: limegreen;
+    background-color: black;
+    padding: 40px 40px 40px 40px;
+    box-shadow: 0 0 20px 5px lightgrey;
 }
 
 br {
