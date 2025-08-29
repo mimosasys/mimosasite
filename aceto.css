@@ -150,3 +150,8 @@ a:hover {
     font-family: "Terminal F4";
     src: url("Terminal\ F4.ttf");
 }
+
+@font-face {
+    font-family: "Greenos";
+    src: url("Greenos-8MpL0.ttf");
+}

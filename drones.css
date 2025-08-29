@@ -162,3 +162,13 @@ a:hover {
     font-family: "MonospaceTypewriter";
     src: url("MonospaceTypewriter.ttf");
 }
+
+@font-face {
+    font-family: "Vigofam";
+    src: url("Vigofam.ttf");
+}
+
+@font-face {
+    font-family: "Greenos";
+    src: url("Greenos-8MpL0.ttf");
+}
