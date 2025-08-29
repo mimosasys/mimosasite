@@ -1,6 +1,7 @@
 body {
     font-family: "Tolman";
     font-size: 18pt;
+    background-color: white;
 }
 
 div[name="header"] {
