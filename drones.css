@@ -1,14 +1,24 @@
 html {
-    background-image: url("arrow heart.png");
-    background-repeat: repeat;
-    background-size: 10%;
+    background: repeating-linear-gradient(
+    33deg,
+    #1d1d1d,
+    #1d1d1d 25px,
+    #b9a025 25px,
+    #b9a025 50px
+    );
+}
+
+.content {
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #1d1d1d;
 }
 
 h1 {
     text-align: center;
-    font-family: "Kristal";
+    font-family: "Terminal F4";
     font-size: 40pt;
-    color: #DBB030;
+    color: #b9a025;
 }
 
 h2 {
@@ -16,7 +26,7 @@ h2 {
     font-family: "Vigofam";
     font-size: 24pt;
     font-style: italic;
-    color: #DBB030;
+    color: #b9a025;
 }
 
 h3 {
@@ -24,15 +34,15 @@ h3 {
     font-family: "Vigofam";
     font-size: 16pt;
     font-style: italic;
-    color: #DBB030;
+    color: #b9a025;
 }
 
 h4 {
     font-family: "Vigofam";
-    color: #DBB030;
+    color: #b9a025;
     font-size: 32pt;
     font-variant: small-caps;
-    margin-bottom: -32pt;
+    margin-bottom: -20pt;
 }
 
 h5 {
@@ -44,7 +54,7 @@ h5 {
 
 h6 {
     font-family: "Greenos";
-    color: #DBB030;
+    color: #b9a025;
     font-size: 26pt;
     font-variant: small-caps;
     margin-bottom: -20pt;
@@ -54,9 +64,9 @@ h6 {
 }
 
 div[name="chapter"]{
-    font-family: "Vigofam";
+    font-family: "MonospaceTypewriter";
     margin: 5%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.1);
     
     color: white;
     border-radius: 30px;
@@ -65,26 +75,19 @@ div[name="chapter"]{
     padding-top: 10px;
 }
 
+span[name="N"] {
+    color: #b7b7b7;
+}
+
+span[name="Cyn"] {
+    color: #dcbb16;
+}
+
 div[name="text"]{
     color: white;
     text-align: left;
-    font-size: 14pt;
+    font-size: 12pt;
     white-space: pre-line;
-}
-
-div[name="computer"] {
-    font-family: "Terminal F4";
-    color: limegreen;
-    background-color: rgb(31, 31, 31);
-    padding: 40px 40px 40px 40px;
-    text-shadow: 0px 0px 5px #000000;
-    box-shadow: 0 0 100px 5px rgb(7, 7, 7) inset, 0 0 20px 5px white;
-}
-
-.date {
-    margin-top: 20pt;
-    font-family: "Terminal F4";
-    color: lightgray;
 }
 
 ul[name="navbar"] {
@@ -137,16 +140,6 @@ a:hover {
 }
 
 @font-face {
-    font-family: "Kristal";
-    src: url("Kristal.ttf");
-}
-
-@font-face {
-    font-family: "Vigofam";
-    src: url("Vigofam.ttf");
-}
-
-@font-face {
-    font-family: "Terminal F4";
-    src: url("Terminal\ F4.ttf");
+    font-family: "MonospaceTypewriter";
+    src: url("MonospaceTypewriter.ttf");
 }
