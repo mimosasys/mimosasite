@@ -12,6 +12,7 @@ html {
     margin-left: 3%;
     margin-right: 3%;
     background-color: #1d1d1d;
+    padding-bottom: 3%;
 }
 
 h1 {
@@ -77,10 +78,28 @@ div[name="chapter"]{
 
 span[name="N"] {
     color: #b7b7b7;
+    text-shadow: 0 0 3px rgba(126, 126, 126, 0.73);
 }
 
 span[name="Cyn"] {
     color: #dcbb16;
+    text-shadow: 0 0 3px rgba(179, 196, 0, 0.73);
+}
+
+span[name="Tessa"] {
+    color:#c888ef;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.73);
+}
+
+span[name="J"] {
+    color:#d24b4b;
+    text-shadow: 0 0 3px rgba(162, 49, 0, 0.73);
+}
+
+span[name="mother"]{
+    color:rgb(225, 0, 0);
+    font-weight: bold;
+    text-shadow: 0 0 5px black;
 }
 
 div[name="text"]{
