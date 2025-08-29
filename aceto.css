@@ -32,7 +32,120 @@ h3 {
     color: #DBB030;
 }
 
+h4 {
+    font-family: "Vigofam";
+    color: #DBB030;
+    font-size: 32pt;
+    font-variant: small-caps;
+    margin-bottom: -32pt;
+}
+
+h5 {
+    font-family: "Vigofam";
+    color: #ffffff;
+    font-size: 24pt;
+    font-variant: small-caps;
+}
+
+h6 {
+    font-family: "Greenos";
+    color: #DBB030;
+    font-size: 26pt;
+    font-variant: small-caps;
+    margin-bottom: -20pt;
+    padding-left: 18%;
+    padding-right: 18%;
+    font-style: italic;
+}
+
+div[name="chapter"]{
+    font-family: "Vigofam";
+    margin: 5%;
+    background-color: rgba(0, 0, 0, 0.7);
+    
+    color: white;
+    border-radius: 30px;
+    padding: 10%;
+    padding-bottom: 60px;
+    padding-top: 10px;
+}
+
+div[name="text"]{
+    color: white;
+    text-align: left;
+    font-size: 14pt;
+}
+
+computer {
+    font-family: "Terminal F4";
+
+}
+
+br {
+    display: block;
+    margin: 10px;
+}
+
+.date {
+    font-family: "Terminal F4";
+    color: lightgray;
+}
+
+ul[name="navbar"] {
+    font-family: "Greenos";
+    text-align: left;
+    font-size: 24pt;
+    font-variant: small-caps;
+    color: white;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    font-size: 18pt;
+    text-wrap-mode: nowrap;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+li[name="navbar_item"] {
+    display:inline;
+    align-content: center;
+    padding-right: 20px;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    text-decoration-line: none;
+}
+
+a:hover {
+    color: rgb(216, 139, 164);
+}
+
 @font-face {
     font-family: "Vigofam";
     src: url("Vigofam.ttf");
+}
+
+@font-face {
+    font-family: "Terminal F4";
+    src: url("Terminal\ F4.ttf");
 }
