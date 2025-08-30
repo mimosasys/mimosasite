@@ -66,14 +66,19 @@ h6 {
 
 div[name="chapter"]{
     font-family: "MonospaceTypewriter";
-    margin: 5%;
-    background-color: rgba(255, 255, 255, 0.1);
+    margin: 0%;
+    background-color: rgba(255, 255, 255, 0.233);
     
     color: white;
     border-radius: 30px;
+    box-shadow: 0 0 100px 120px inset #1d1d1d;
     padding: 10%;
-    padding-bottom: 60px;
-    padding-top: 10px;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+span {
+    white-space: pre-line;
 }
 
 span[name="N"] {
@@ -88,18 +93,30 @@ span[name="Cyn"] {
 
 span[name="Tessa"] {
     color:#c888ef;
+    font-family: "GALONE";
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.73);
+    font-size: 14pt;
 }
 
 span[name="J"] {
     color:#d24b4b;
     text-shadow: 0 0 3px rgba(162, 49, 0, 0.73);
+    font-family: "JosefinBold";
+    font-size: 16pt;
 }
 
 span[name="mother"]{
     color:rgb(225, 0, 0);
     font-weight: bold;
     text-shadow: 0 0 5px black;
+}
+
+span[name="SOLVER"]{
+    color:yellow;
+    font-variant: small-caps;
+    text-shadow: 0 0 10px black;
+    font-family: "OCRA";
+    font-size: 14pt;
 }
 
 div[name="text"]{
@@ -164,6 +181,11 @@ a:hover {
 }
 
 @font-face {
+    font-family: "Terminal F4";
+    src: url("Terminal\ F4.ttf");
+}
+
+@font-face {
     font-family: "Vigofam";
     src: url("Vigofam.ttf");
 }
@@ -171,4 +193,19 @@ a:hover {
 @font-face {
     font-family: "Greenos";
     src: url("Greenos-8MpL0.ttf");
+}
+
+@font-face {
+    font-family: "OCRA";
+    src: url("OCRAEXT.TTF");
+}
+
+@font-face {
+    font-family: "GALONE";
+    src: url("GALONE.ttf");
+}
+
+@font-face {
+    font-family: "JosefinBold";
+    src: url("JosefinSlab-Bold.ttf");
 }
