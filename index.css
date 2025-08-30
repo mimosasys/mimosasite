@@ -1,13 +1,33 @@
+@property --sine-progress {
+    initial-value: 0;
+    inherits: false;
+    syntax: "<number>";
+}
+
 body {
     font-family: "Tolman";
     font-size: 18pt;
+    background-color: white;
 }
 
 div[name="header"] {
     width: 100%;
-    margin-top:20px;
-    box-shadow: 0px -30px 20px 60px rgb(172, 41, 113);
+    margin-top:10px;
+    box-shadow: 0px 0px 20px 20px rgb(172, 41, 113);
     font-weight:bolder;
+    translate: 0 0;
+}
+
+.mimosaspin {
+    width: 48px;
+    animation: rotate 3s infinite linear;
+    align-content: center;
+}
+
+.lettershake {
+    display: inline-block;
+    animation: bounce 2s infinite linear;
+    translate: calc(cos(var(--sine-progress)*3.1415*2) * 5px) calc(sin(var(--sine-progress)*3.1415*2) * 10px - 20px);
 }
 
 @keyframes rainbow {
@@ -19,13 +39,22 @@ div[name="header"] {
     100% {color: #E15353;}
 }
 
+@keyframes bounce {
+    from {
+        --sine-progress: 0;
+    }
+    to {
+        --sine-progress: 1;
+    }
+}
+
 @keyframes rotate {
     0% {transform: rotate3d(0,1,0,0)}
     100% {transform: rotate3d(0,1,0,360deg)}
 }
 
 .main {
-    margin-top: 50px;
+    margin-top: 30px;
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 5%;
@@ -37,13 +66,13 @@ div[name="header"] {
 
 header {
     text-align: center;
-    color:blue;
-    animation-name: rainbow;
+    color:#F3CD4C;
+    
     animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     background-color: rgb(172, 41, 113);
-    text-decoration-line:underline;
+
     font-weight:bolder;
     padding:5px;
 }
@@ -65,6 +94,9 @@ ul[name="navbar"] {
     display: none;
     position: absolute;
     font-size: 18pt;
+    text-wrap: nowrap;
+    text-align: left;
+    padding-left: 10%;
 }
 
 .dropdown-content a {
@@ -77,6 +109,7 @@ ul[name="navbar"] {
 li[name="navbar_item"] {
     display:inline;
     align-content: center;
+    padding-inline: 5%;
 }
 
 a {

@@ -1,0 +1,174 @@
+html {
+    background: repeating-linear-gradient(
+    33deg,
+    #1d1d1d,
+    #1d1d1d 25px,
+    #b9a025 25px,
+    #b9a025 50px
+    );
+}
+
+.content {
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: #1d1d1d;
+    padding-bottom: 3%;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Terminal F4";
+    font-size: 40pt;
+    color: #b9a025;
+}
+
+h2 {
+    text-align: center;
+    font-family: "Vigofam";
+    font-size: 24pt;
+    font-style: italic;
+    color: #b9a025;
+}
+
+h3 {
+    text-align: center;
+    font-family: "Vigofam";
+    font-size: 16pt;
+    font-style: italic;
+    color: #b9a025;
+}
+
+h4 {
+    font-family: "Vigofam";
+    color: #b9a025;
+    font-size: 32pt;
+    font-variant: small-caps;
+    margin-bottom: -20pt;
+}
+
+h5 {
+    font-family: "Vigofam";
+    color: #ffffff;
+    font-size: 24pt;
+    font-variant: small-caps;
+}
+
+h6 {
+    font-family: "Greenos";
+    color: #b9a025;
+    font-size: 26pt;
+    font-variant: small-caps;
+    margin-bottom: -20pt;
+    padding-left: 18%;
+    padding-right: 18%;
+    font-style: italic;
+}
+
+div[name="chapter"]{
+    font-family: "MonospaceTypewriter";
+    margin: 5%;
+    background-color: rgba(255, 255, 255, 0.1);
+    
+    color: white;
+    border-radius: 30px;
+    padding: 10%;
+    padding-bottom: 60px;
+    padding-top: 10px;
+}
+
+span[name="N"] {
+    color: #b7b7b7;
+    text-shadow: 0 0 3px rgba(126, 126, 126, 0.73);
+}
+
+span[name="Cyn"] {
+    color: #dcbb16;
+    text-shadow: 0 0 3px rgba(179, 196, 0, 0.73);
+}
+
+span[name="Tessa"] {
+    color:#c888ef;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.73);
+}
+
+span[name="J"] {
+    color:#d24b4b;
+    text-shadow: 0 0 3px rgba(162, 49, 0, 0.73);
+}
+
+span[name="mother"]{
+    color:rgb(225, 0, 0);
+    font-weight: bold;
+    text-shadow: 0 0 5px black;
+}
+
+div[name="text"]{
+    color: white;
+    text-align: left;
+    font-size: 12pt;
+    white-space: pre-line;
+}
+
+ul[name="navbar"] {
+    font-family: "Greenos";
+    text-align: left;
+    font-size: 24pt;
+    font-variant: small-caps;
+    color: white;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    font-size: 18pt;
+    text-wrap-mode: nowrap;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+li[name="navbar_item"] {
+    display:inline;
+    align-content: center;
+    padding-right: 20px;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    text-decoration-line: none;
+}
+
+a:hover {
+    color: rgb(216, 139, 164);
+}
+
+@font-face {
+    font-family: "MonospaceTypewriter";
+    src: url("MonospaceTypewriter.ttf");
+}
+
+@font-face {
+    font-family: "Vigofam";
+    src: url("Vigofam.ttf");
+}
+
+@font-face {
+    font-family: "Greenos";
+    src: url("Greenos-8MpL0.ttf");
+}
