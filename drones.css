@@ -81,7 +81,7 @@ summary {
 div[name="chapter"]{
     font-family: "MonospaceTypewriter";
     margin: 0%;
-    background-color: rgba(255, 255, 255, 0.233);
+    background-color: rgba(255, 255, 255, 0.116);
     
     color: white;
     border-radius: 30px;
@@ -110,7 +110,7 @@ span[name="Cyn"] {
 }
 
 span[name="Tessa"] {
-    color:#c888ef;
+    color:#7e9be9;
     font-family: "GALONE";
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.73);
     font-size: 14pt;
@@ -123,13 +123,28 @@ span[name="J"] {
     font-size: 16pt;
 }
 
-span[name="mother"]{
+span[name="V"] {
+    color:#dd3f5a;
+    font-family: "SitkaSmall";
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.829);
+    font-size: 16pt;
+    text-decoration: solid;
+}
+
+span[name="Uzi"] {
+    color:#bd29e2;
+    font-family: "BerlinSansFB";
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.73);
+    font-size: 15pt;
+}
+
+span[name="mother"] {
     color:rgb(0, 0, 0);
     font-weight: bold;
     text-shadow: 0 0 3px rgb(255, 255, 255);
 }
 
-span[name="SOLVER"]{
+span[name="SOLVER"] {
     color:yellow;
     font-variant: small-caps;
     text-shadow: 0 0 10px black;
@@ -137,7 +152,7 @@ span[name="SOLVER"]{
     font-size: 14pt;
 }
 
-div[name="text"]{
+div[name="text"] {
     color: white;
     text-align: left;
     font-size: 12pt;
@@ -145,10 +160,10 @@ div[name="text"]{
 }
 
 ul[name="navbar"] {
-    font-family: "Greenos";
+    font-family: "Terminal F4";
     text-align: left;
     font-size: 24pt;
-    font-variant: small-caps;
+    font-variant: normal;
     color: white;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.5);
@@ -236,4 +251,14 @@ a:hover {
 @font-face {
     font-family: "LiberationSerifBold";
     src: url("LiberationSerif-Bold.ttf");
+}
+
+@font-face {
+    font-family: "SitkaSmall";
+    src: url("sitka-small-599.ttf");
+}
+
+@font-face {
+    font-family: "BerlinSansFB";
+    src: url("BRLNSR.TTF");
 }
