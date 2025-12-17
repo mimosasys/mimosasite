@@ -11,7 +11,7 @@ html {
 .content {
     margin-left: 3%;
     margin-right: 3%;
-    background-color: #1d1d1d;
+    background-color: #2c2c2c;
     padding-bottom: 3%;
 }
 
@@ -85,7 +85,7 @@ div[name="chapter"]{
     
     color: white;
     border-radius: 30px;
-    box-shadow: 0 0 100px 120px inset #1d1d1d;
+    box-shadow: 0 0 100px 120px inset #2c2c2c;
     padding: 10%;
     padding-bottom: 5%;
     padding-top: 5%;
@@ -122,7 +122,7 @@ span {
 }
 
 span[name="N"] {
-    color: #b7b7b7;
+    color: #999999;
     text-shadow: 0 0 3px rgba(126, 126, 126, 0.73);
     font-family: "LiberationSerifBold";
     font-size: 15pt;
@@ -136,38 +136,41 @@ span[name="Cyn"] {
 }
 
 span[name="Tessa"] {
-    color:#7e9be9;
+    color:#49a2dd;
     font-family: "GALONE";
-    text-shadow: 0 0 3px rgba(255, 255, 255, 0.459);
-    font-size: 14pt;
+    /*text-shadow: 0 0 3px rgba(255, 255, 255, 0.459);*/
+    font-size: 16pt;
 }
 
 span[name="J"] {
-    color:#ff3838;
-    text-shadow: 0 0 3px rgba(85, 25, 0, 0.644);
+    color:#ff6435;
+    text-shadow: 0 0 3px rgba(138, 9, 9, 0.829);
     font-family: "JosefinBold";
-    font-size: 16pt;
+    font-size: 17pt;
 }
 
 span[name="V"] {
-    color:#dd3f5a;
+    color:#ff4141;
     font-family: "SitkaSmall";
+    font-weight: bold;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.829);
-    font-size: 16pt;
+    font-size: 14pt;
     text-decoration: solid;
 }
 
 span[name="Uzi"] {
-    color:#bd29e2;
+    color:#d277e9;
     font-family: "BerlinSansFB";
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.73);
-    font-size: 15pt;
+    font-size: 17pt;
 }
 
 span[name="mother"] {
-    color:rgb(0, 0, 0);
+    color:rgb(255, 255, 255);
+    text-decoration: solid;
+    font-family: "BethEllen";
     font-weight: bold;
-    text-shadow: 0 0 3px rgb(255, 255, 255);
+    font-size: 14pt;
 }
 
 span[name="SOLVER"] {
@@ -175,13 +178,13 @@ span[name="SOLVER"] {
     font-variant: small-caps;
     text-shadow: 0 0 10px black;
     font-family: "OCRA";
-    font-size: 14pt;
+    font-size: 16pt;
 }
 
 div[name="text"] {
     color: white;
     text-align: left;
-    font-size: 12pt;
+    font-size: 13pt;
     white-space: pre-line;
 }
 
@@ -287,4 +290,9 @@ a:hover {
 @font-face {
     font-family: "BerlinSansFB";
     src: url("BRLNSR.TTF");
+}
+
+@font-face {
+    font-family: "BethEllen";
+    src: url("Beth-Ellen-2.0.ttf");
 }
