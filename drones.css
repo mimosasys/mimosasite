@@ -47,10 +47,11 @@ h4 {
 }
 
 h5 {
-    font-family: "Vigofam";
-    color: #ffffff;
-    font-size: 24pt;
+    font-family: "Terminal F4";
+    color: lightgoldenrodyellow;
+    font-size: 16pt;
     font-variant: small-caps;
+    margin-bottom: -20pt;
 }
 
 h6 {
