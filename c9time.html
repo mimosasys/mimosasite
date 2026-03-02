@@ -1,0 +1,157 @@
+<html>
+    <body onload="timer()">
+
+    </body>
+
+    <h1 id="etime"></h1>
+    <h1 id="c9time"></h1>
+
+
+    <script>
+        let mult = 365.25 / 392.34;
+
+        let knownDateEarth = new Date("1:16 March 2, 2026").getTime();
+
+        let c9DayLength = 86400000 + 2100000;
+        let c9YearLength = 392.330254673 * c9DayLength ; // in ms
+
+        let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","Ser"];
+
+
+        function timer() {
+            let curTime = new Date(); // "9:22:02 February 16 2025", "9:07:48 November 6 2024"
+            let now = curTime.getTime();
+
+            let nowArray = [curTime.getFullYear(),curTime.getMonth() + 1,curTime.getDate(),curTime.getHours(),curTime.getMinutes(),curTime.getSeconds(),curTime.getMilliseconds()];
+
+            //let nowArray = [2025,1,16,9,22,2,0];
+
+            document.getElementById("etime").innerHTML = timeArrayToString(nowArray);
+            let c9Time = msToC9(msFromEarthEpoch(now));
+            document.getElementById("c9time").innerHTML = timeArrayToString(c9Time);
+
+            setTimeout(timer,500);
+        }    
+
+        function msFromEarthEpoch(time) {
+            return time - knownDateEarth;
+        }
+
+        function msToC9(time) {
+            let c9Epoch = [3073,3,6,10,0,0,0]
+            let diffArray = [0,0,0,0,0,0,0] // Y M D H m s ms
+
+            let sign = Math.sign(time);
+            time = time * sign;
+
+            let years = time / c9YearLength;
+            diffArray[0] = Math.floor(years);
+            time -= years;
+
+            let totalDays = Math.abs(time / c9DayLength);
+            let months = 0;
+            let days = 0;
+
+            for (let i = 1; i <= 13; i++) {
+                let toSub = 0;
+
+                if ([9,4,6,11].includes(i)) {
+                    toSub = 30;
+                } else if (i == 2) {
+                    if (diffArray[0] % 3 == 0) {
+                        toSub = 29;
+                    } else toSub = 28;
+                } else if (i == 13) {
+                    toSub = 27;
+                } else toSub = 31;
+
+                if (totalDays - toSub > 0) {
+                    totalDays -= toSub;
+                } else {
+                    months = i - 1;
+                    break;
+                }
+            }
+
+            days = Math.floor(totalDays);
+
+            diffArray[1] = months;
+            diffArray[2] = days;
+
+            let hours = (totalDays - days) * 24;
+
+            diffArray[3] = Math.floor(hours);
+
+            let minutes = (hours - diffArray[3]) * 60;
+
+            diffArray[4] = Math.floor(minutes);
+
+            let seconds = (minutes - diffArray[4]) * 60;
+
+            diffArray[5] = Math.floor(seconds);
+
+            let milliseconds = (seconds - diffArray[5]) * 1000;
+
+            diffArray[6] = Math.floor(milliseconds);
+
+            let outArray = [];
+
+            outArray[0] = c9Epoch[0] + sign * diffArray[0]; // year
+
+            let tempMonth = c9Epoch[1] + sign * diffArray[1]; // month
+            if (tempMonth > 13) tempMonth -= 13;
+            if (tempMonth < 1) tempMonth += 13;
+            outArray[1] = tempMonth;
+
+            let tempDay = c9Epoch[2] + sign * diffArray[2]; // month
+            
+            let daysInMonth = 0;
+            
+            if ([9,4,6,11].includes(tempMonth)) {
+                daysInMonth = 30;
+            } else if (tempMonth == 2) {
+                if (diffArray[0] % 3 == 0) {
+                    daysInMonth = 29;
+                } else daysInMonth = 28;
+            } else if (tempMonth == 13) {
+                daysInMonth = 27;
+            } else daysInMonth = 31;
+
+            if (tempDay > daysInMonth) tempDay -= daysInMonth;
+            if (tempDay < 0) tempDay += daysInMonth;
+
+            outArray[2] = tempDay;
+
+            let tempHour = c9Epoch[3] + sign * diffArray[3]; // hour
+            if (tempHour > 23) tempHour -= 23;
+            if (tempHour < 0) tempHour += 23;
+            outArray[3] = tempHour;
+
+            let tempMinute = c9Epoch[4] + sign * diffArray[4]; // minute
+            if (tempMinute > 59) tempMinute -= 59;
+            if (tempMinute < 0) tempMinute += 59;
+            outArray[4] = tempMinute;
+
+            let tempSecond = c9Epoch[5] + sign * diffArray[5]; // second
+            if (tempSecond > 59) tempSecond -= 59;
+            if (tempSecond < 0) tempSecond += 59;
+            outArray[5] = tempSecond;
+            
+            let tempMillisecond = c9Epoch[6] + sign * diffArray[6]; // millisecond
+            if (tempMillisecond > 999) tempMillisecond -= 999;
+            if (tempMillisecond < 0) tempMillisecond += 999;
+            outArray[6] = tempMillisecond;
+
+            return outArray;
+        }
+        
+        function timeArrayToString(time) {
+            return time[3] + ":" + (time[4] < 10 ? "0" + time[4] : time[4]) + " - " + (months[time[1] - 1]) + " " + time[2] + ", " + time[0];
+        } 
+
+    </script>
+
+
+
+
+</html>
