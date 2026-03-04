@@ -82,6 +82,7 @@
         function timer() {
             let curTime = new Date(); // "9:22:02 February 16 2025", "9:07:48 November 6 2024"
             let now = curTime.getTime();
+            let timezone = curTime.getTimezoneOffset();
 
             let nowArray = [curTime.getFullYear(),curTime.getMonth() + 1,curTime.getDate(),curTime.getHours(),curTime.getMinutes(),curTime.getSeconds(),curTime.getMilliseconds()];
 
@@ -92,7 +93,7 @@
             document.getElementById("c9time").innerHTML = timeArrayToString(c9Time);
 
             let inputdate = document.querySelector('input[type="datetime-local"]');
-            let outputdate = msToC9(msFromEarthEpoch(inputdate.valueAsNumber));
+            let outputdate = msToC9(msFromEarthEpoch(inputdate.valueAsNumber + timezone*60000));
             document.getElementById("outputtime").innerHTML = timeArrayToString(outputdate);
 
             setTimeout(timer,100);
@@ -130,7 +131,7 @@
             outArray[0] = years;
             time -= Math.floor((time + yearOffset) / c9YearLength) * c9YearLength;
 
-            let totalDays = (yearOffset + time) - 3 * c9DayLength; // magical fix idk
+            let totalDays = (yearOffset + time) - 2 * c9DayLength; // magical fix idk
 
             let month = 0;
             let day = 0;
@@ -159,7 +160,7 @@
 
             outArray[1] = month;
             outArray[2] = Math.floor(totalDays / c9DayLength) + 1;
-            time = totalDays - outArray[2] * c9DayLength;
+            time = totalDays - (outArray[2] - 1) * c9DayLength;
 
             let hours = Math.floor(time / c9HLength);
             outArray[3] = hours;
