@@ -20,6 +20,8 @@
         <br>
         Convert any time:
         <br><br>
+        <u style="font-size: small; color: lime;">[work in progress]</u>
+        <br>
         <input type="datetime-local" id="inputtime" style="font-size: x-large;">
         <h1 id="outputtime"></h1>
         <button id="copyoutputtime">Copy to clipboard</button>
@@ -160,7 +162,14 @@
 
             outArray[1] = month;
             outArray[2] = Math.floor(totalDays / c9DayLength) + 1;
-            time = totalDays - (outArray[2] - 1) * c9DayLength;
+            let tempDay = outArray[2];
+            // if (outArray[2] < 0) {
+            //     month -= 1;
+            //     if (month <= 0) month += 13;
+            //     outArray[1] = month;
+            //     outArray[2] = monthLengths[month-1] + (outArray[2]);
+            // }
+            time = totalDays - (tempDay - 1) * c9DayLength;
 
             let hours = Math.floor(time / c9HLength);
             outArray[3] = hours;
