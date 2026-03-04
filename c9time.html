@@ -12,18 +12,23 @@
         <br>
         <h1 id="etime"></h1>
 
-        On Copper 9 it is:
+        At <u>Outpost 3, Copper 9</u> it is:
         <br>
         <h1 id="c9time"></h1>
+        <button id="copyautotime">Copy to clipboard</button>
         <hr>
         <br>
         Convert any time:
         <br><br>
-        <input type="datetime-local" id="inputtime">
+        <input type="datetime-local" id="inputtime" style="font-size: x-large;">
         <h1 id="outputtime"></h1>
+        <button id="copyoutputtime">Copy to clipboard</button>
     </body>
 
     <script>
+        const autoTimeButton = document.getElementById("copyautotime");
+        const outputTimeButton = document.getElementById("copyoutputtime");
+
         let knownDateEarth = new Date("1:16 March 2, 2026").getTime();
 
         let c9DayLength = 3600000 * (24 + 35/60);
@@ -51,8 +56,20 @@
             let outputdate = msToC9(msFromEarthEpoch(inputdate.valueAsNumber));
             document.getElementById("outputtime").innerHTML = timeArrayToString(outputdate);
 
-            setTimeout(timer,500);
+            setTimeout(timer,100);
         }    
+
+        autoTimeButton.addEventListener("click",copyAutoTime);
+
+        function copyAutoTime() {
+            navigator.clipboard.writeText(document.getElementById("c9time").innerText);
+        }
+
+        outputTimeButton.addEventListener("click",copyOutputTime);
+
+        function copyOutputTime() {
+            navigator.clipboard.writeText(document.getElementById("outputtime").innerText);
+        }
 
         function msFromEarthEpoch(time) {
             return time - knownDateEarth;
