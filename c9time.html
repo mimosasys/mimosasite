@@ -130,7 +130,7 @@
             outArray[0] = years;
             time -= Math.floor((time + yearOffset) / c9YearLength) * c9YearLength;
 
-            let totalDays = (yearOffset + time) - 2 * c9DayLength;
+            let totalDays = (yearOffset + time) - 3 * c9DayLength; // magical fix idk
 
             let month = 0;
             let day = 0;
@@ -158,7 +158,7 @@
             }
 
             outArray[1] = month;
-            outArray[2] = Math.floor(totalDays / c9DayLength);
+            outArray[2] = Math.floor(totalDays / c9DayLength) + 1;
             time = totalDays - outArray[2] * c9DayLength;
 
             let hours = Math.floor(time / c9HLength);
