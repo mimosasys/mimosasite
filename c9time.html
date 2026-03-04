@@ -1,22 +1,39 @@
-<html>
-    <body onload="timer()">
+<link rel="stylesheet" href="c9time.css">
 
+<html>
+    <div class="topnav">
+        <ul name="navbar">
+            <li name="navbar_item"><a href="index.html">back to mimosa.gay</a></li>
+        </ul>
+    </div>
+
+    <body onload="timer()">
+        On Earth it is:
+        <br>
+        <h1 id="etime"></h1>
+
+        On Copper 9 it is:
+        <br>
+        <h1 id="c9time"></h1>
+        <hr>
+        <br>
+        Convert any time:
+        <br><br>
+        <input type="datetime-local" id="inputtime">
+        <h1 id="outputtime"></h1>
     </body>
 
-    <h1 id="etime"></h1>
-    <h1 id="c9time"></h1>
-
-
     <script>
-        let mult = 365.25 / 392.34;
-
         let knownDateEarth = new Date("1:16 March 2, 2026").getTime();
 
-        let c9DayLength = 86400000 + 2100000;
-        let c9YearLength = 392.330254673 * c9DayLength ; // in ms
+        let c9DayLength = 3600000 * (24 + 35/60);
+        let c9YearDays = 392.330254673;
+        let c9YearLength =  c9YearDays * c9DayLength ; // in ms
+
+        let mult =          365.256363004 / c9YearLength;
 
         let months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","Ser"];
-
+        let monthLengths = [31,28,31,30,31,30,31,31,30,31,30,31,27];
 
         function timer() {
             let curTime = new Date(); // "9:22:02 February 16 2025", "9:07:48 November 6 2024"
@@ -24,11 +41,15 @@
 
             let nowArray = [curTime.getFullYear(),curTime.getMonth() + 1,curTime.getDate(),curTime.getHours(),curTime.getMinutes(),curTime.getSeconds(),curTime.getMilliseconds()];
 
-            //let nowArray = [2025,1,16,9,22,2,0];
+            //nowArray = [2025,1,16,9,22,2,0];
 
             document.getElementById("etime").innerHTML = timeArrayToString(nowArray);
             let c9Time = msToC9(msFromEarthEpoch(now));
             document.getElementById("c9time").innerHTML = timeArrayToString(c9Time);
+
+            let inputdate = document.querySelector('input[type="datetime-local"]');
+            let outputdate = msToC9(msFromEarthEpoch(inputdate.valueAsNumber));
+            document.getElementById("outputtime").innerHTML = timeArrayToString(outputdate);
 
             setTimeout(timer,500);
         }    
@@ -39,119 +60,73 @@
 
         function msToC9(time) {
             let c9Epoch = [3073,3,6,10,0,0,0]
-            let diffArray = [0,0,0,0,0,0,0] // Y M D H m s ms
 
-            let sign = Math.sign(time);
-            time = time * sign;
+            let c9HLength = c9DayLength / 24;
+            let c9MLength = c9HLength / 60;
+            let c9SLength = c9MLength / 60;
+            let c9MSLength = c9SLength / 1000;
 
-            let years = time / c9YearLength;
-            diffArray[0] = Math.floor(years);
-            time -= years;
+            let outArray = [0,0,0,0,0,0,0] // Y M D H m s ms
 
-            let totalDays = Math.abs(time / c9DayLength);
-            let months = 0;
-            let days = 0;
+            let yearOffset = (c9Epoch[1]-1) * 31 * c9DayLength + (c9Epoch[2]-1) * c9DayLength + c9Epoch[3]*c9HLength
 
-            for (let i = 1; i <= 13; i++) {
+            let years = Math.floor((time + yearOffset) / c9YearLength) + c9Epoch[0];
+            outArray[0] = years;
+            time -= Math.floor((time + yearOffset) / c9YearLength) * c9YearLength;
+
+            let totalDays = (yearOffset + time) - 2 * c9DayLength;
+
+            let month = 0;
+            let day = 0;
+
+            for (let j = 1; j <=13; j++) {
                 let toSub = 0;
 
-                if ([9,4,6,11].includes(i)) {
-                    toSub = 30;
-                } else if (i == 2) {
-                    if (diffArray[0] % 3 == 0) {
-                        toSub = 29;
-                    } else toSub = 28;
-                } else if (i == 13) {
-                    toSub = 27;
-                } else toSub = 31;
+                //console.log(j);
+
+                toSub = monthLengths[j-1];
+                if (j == 2) {
+                    if (years % 3 == 0) toSub += 1;
+                }
+
+                toSub *= c9DayLength;
+
+                month += 1;
 
                 if (totalDays - toSub > 0) {
+                    //console.log(months[j-1]);
                     totalDays -= toSub;
                 } else {
-                    months = i - 1;
                     break;
                 }
             }
 
-            days = Math.floor(totalDays);
+            outArray[1] = month;
+            outArray[2] = Math.floor(totalDays / c9DayLength);
+            time = totalDays - outArray[2] * c9DayLength;
 
-            diffArray[1] = months;
-            diffArray[2] = days;
+            let hours = Math.floor(time / c9HLength);
+            outArray[3] = hours;
+            time -= hours * c9HLength;
 
-            let hours = (totalDays - days) * 24;
+            let minutes = Math.floor(time / c9MLength);
+            outArray[4] = minutes;
+            time -= minutes * c9MLength;
 
-            diffArray[3] = Math.floor(hours);
+            let seconds = Math.floor(time / c9SLength);
+            outArray[5] = seconds;
+            time -= seconds * c9SLength;
 
-            let minutes = (hours - diffArray[3]) * 60;
-
-            diffArray[4] = Math.floor(minutes);
-
-            let seconds = (minutes - diffArray[4]) * 60;
-
-            diffArray[5] = Math.floor(seconds);
-
-            let milliseconds = (seconds - diffArray[5]) * 1000;
-
-            diffArray[6] = Math.floor(milliseconds);
-
-            let outArray = [];
-
-            outArray[0] = c9Epoch[0] + sign * diffArray[0]; // year
-
-            let tempMonth = c9Epoch[1] + sign * diffArray[1]; // month
-            if (tempMonth > 13) tempMonth -= 13;
-            if (tempMonth < 1) tempMonth += 13;
-            outArray[1] = tempMonth;
-
-            let tempDay = c9Epoch[2] + sign * diffArray[2]; // month
-            
-            let daysInMonth = 0;
-            
-            if ([9,4,6,11].includes(tempMonth)) {
-                daysInMonth = 30;
-            } else if (tempMonth == 2) {
-                if (diffArray[0] % 3 == 0) {
-                    daysInMonth = 29;
-                } else daysInMonth = 28;
-            } else if (tempMonth == 13) {
-                daysInMonth = 27;
-            } else daysInMonth = 31;
-
-            if (tempDay > daysInMonth) tempDay -= daysInMonth;
-            if (tempDay < 0) tempDay += daysInMonth;
-
-            outArray[2] = tempDay;
-
-            let tempHour = c9Epoch[3] + sign * diffArray[3]; // hour
-            if (tempHour > 23) tempHour -= 23;
-            if (tempHour < 0) tempHour += 23;
-            outArray[3] = tempHour;
-
-            let tempMinute = c9Epoch[4] + sign * diffArray[4]; // minute
-            if (tempMinute > 59) tempMinute -= 59;
-            if (tempMinute < 0) tempMinute += 59;
-            outArray[4] = tempMinute;
-
-            let tempSecond = c9Epoch[5] + sign * diffArray[5]; // second
-            if (tempSecond > 59) tempSecond -= 59;
-            if (tempSecond < 0) tempSecond += 59;
-            outArray[5] = tempSecond;
-            
-            let tempMillisecond = c9Epoch[6] + sign * diffArray[6]; // millisecond
-            if (tempMillisecond > 999) tempMillisecond -= 999;
-            if (tempMillisecond < 0) tempMillisecond += 999;
-            outArray[6] = tempMillisecond;
+            let mseconds = Math.floor(time / c9MSLength);
+            outArray[6] = mseconds;
 
             return outArray;
         }
         
         function timeArrayToString(time) {
-            return time[3] + ":" + (time[4] < 10 ? "0" + time[4] : time[4]) + " - " + (months[time[1] - 1]) + " " + time[2] + ", " + time[0];
+            return time[3] + ":" + (time[4] < 10 ? "0" + time[4] : time[4]) + ":" + (time[5] < 10 ? "0" + time[5] : time[5])+ " - " + (months[time[1] - 1]) + " " + time[2] + ", " + time[0];
         } 
 
     </script>
-
-
-
 
 </html>
