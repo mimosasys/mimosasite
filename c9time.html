@@ -20,6 +20,8 @@
         <br>
         Convert any time:
         <br><br>
+        <u style="font-size: small; color: lime;">[work in progress]</u>
+        <br>
         <input type="datetime-local" id="inputtime" style="font-size: x-large;">
         <h1 id="outputtime"></h1>
         <button id="copyoutputtime">Copy to clipboard</button>
@@ -36,6 +38,9 @@
                 <br>
                 <ul>
                     <li>
+                        Copper 9 orbits a binary star system around their common centre of gravity (called the barycenter). These stars are both slightly smaller, redder, and cooler than Earth's Sun.
+                    </li>
+                    <li>
                         One Copper 9 year lasts about 392.33 Copper 9 days. This means that as well as having an extra month (named <b>Seramorris</b>, lasts 27 days, placed after December), there is a leap year every 3 years, not 4.
                     </li>
                     <li>
@@ -44,6 +49,17 @@
                     <li>
                         <b>Outpost 3</b> on Copper 9, where the drones used to live, was (will be?) settled by humans sometime in the 3030s, and was used as a mining outpost and refinery until an incident caused the humans' terraforming tools to fail in the 3050s.
                     </li>
+                    <ul>
+                        <li>
+                            Around Outpost 9, the temperatures can get as low as -120°C in the winter months, but on average are around -90°C.
+                        </li>
+                        <li>
+                            There is a weather cycle and oceans on Copper 9, however these are made of a chemical that we believe is Carbon Disulfide (CS<sub>2</sub>), which interestingly is also a kind of neurotoxin.
+                        </li>
+                        <li>
+                            These conditions combined mean that the planet is entirely unsuitable for humans without some sort of terraforming technology, which is all no longer functioning.
+                        </li>
+                    </ul>
                 </ul>
             </details>
         </div>
@@ -54,7 +70,7 @@
         const autoTimeButton = document.getElementById("copyautotime");
         const outputTimeButton = document.getElementById("copyoutputtime");
 
-        let knownDateEarth = new Date("1:16 March 2, 2026 +10:30").getTime();
+        let knownDateEarth = 1772376360000 // <-- "1:16 March 2, 2026 +10:30"
 
         let c9DayLength = 3600000 * (24 + 35/60);
         let c9YearDays = 392.330254673;
@@ -68,6 +84,7 @@
         function timer() {
             let curTime = new Date(); // "9:22:02 February 16 2025", "9:07:48 November 6 2024"
             let now = curTime.getTime();
+            let timezone = curTime.getTimezoneOffset();
 
             let nowArray = [curTime.getFullYear(),curTime.getMonth() + 1,curTime.getDate(),curTime.getHours(),curTime.getMinutes(),curTime.getSeconds(),curTime.getMilliseconds()];
 
@@ -78,7 +95,7 @@
             document.getElementById("c9time").innerHTML = timeArrayToString(c9Time);
 
             let inputdate = document.querySelector('input[type="datetime-local"]');
-            let outputdate = msToC9(msFromEarthEpoch(inputdate.valueAsNumber));
+            let outputdate = msToC9(msFromEarthEpoch(inputdate.valueAsNumber + timezone*60000));
             document.getElementById("outputtime").innerHTML = timeArrayToString(outputdate);
 
             setTimeout(timer,100);
@@ -108,15 +125,19 @@
             let c9SLength = c9MLength / 60;
             let c9MSLength = c9SLength / 1000;
 
+            // remember: 26/12/2025 
+
+            //console.log(new Date("26 Dec 2025 00:00 +10:30").getTime()); // 1766669400000
+
             let outArray = [0,0,0,0,0,0,0] // Y M D H m s ms
 
-            let yearOffset = (c9Epoch[1]-1) * 31 * c9DayLength + (c9Epoch[2]-1) * c9DayLength + c9Epoch[3]*c9HLength
+            let yearOffset = (c9Epoch[1]-1) * 31 * c9DayLength + (c9Epoch[2]-1) * c9DayLength + c9Epoch[3]*c9HLength // 5966375000, amount of ms since start of year for epoch
 
             let years = Math.floor((time + yearOffset) / c9YearLength) + c9Epoch[0];
             outArray[0] = years;
             time -= Math.floor((time + yearOffset) / c9YearLength) * c9YearLength;
 
-            let totalDays = (yearOffset + time) - 2 * c9DayLength;
+            let totalDays = (yearOffset + time) - 3 * c9DayLength; // magical fix idk
 
             let month = 0;
             let day = 0;
@@ -144,8 +165,15 @@
             }
 
             outArray[1] = month;
-            outArray[2] = Math.floor(totalDays / c9DayLength);
-            time = totalDays - outArray[2] * c9DayLength;
+            outArray[2] = Math.floor(totalDays / c9DayLength) + 1;
+            let tempDay = outArray[2];
+            // if (outArray[2] < 0) {
+            //     month -= 1;
+            //     if (month <= 0) month += 13;
+            //     outArray[1] = month;
+            //     outArray[2] = monthLengths[month-1] + (outArray[2]);
+            // }
+            time = totalDays - (tempDay - 1) * c9DayLength;
 
             let hours = Math.floor(time / c9HLength);
             outArray[3] = hours;
