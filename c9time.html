@@ -134,7 +134,6 @@
             let yearOffset = (c9Epoch[1]-1) * 31 * c9DayLength + (c9Epoch[2]-1) * c9DayLength + c9Epoch[3]*c9HLength // 5966375000, amount of ms since start of year for epoch
 
             let years = Math.floor((time + yearOffset) / c9YearLength) + c9Epoch[0];
-            outArray[0] = years;
             time -= Math.floor((time + yearOffset) / c9YearLength) * c9YearLength;
 
             let totalDays = (yearOffset + time) - 3 * c9DayLength; // magical fix idk
@@ -164,9 +163,18 @@
                 }
             }
 
+            // if (totalDays <= 0) {
+            //     years -= 1;
+            //     day += 27;
+            //     month = 13;
+            // }
+
+            outArray[0] = years;
+            //console.log(totalDays);
+
             outArray[1] = month;
             outArray[2] = Math.floor(totalDays / c9DayLength) + 1;
-            let tempDay = outArray[2];
+            let tempDay = outArray[2] - day;
             // if (outArray[2] < 0) {
             //     month -= 1;
             //     if (month <= 0) month += 13;
