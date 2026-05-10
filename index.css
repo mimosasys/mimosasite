@@ -30,6 +30,21 @@ div[name="header"] {
     translate: calc(cos(var(--sine-progress)*3.1415*2) * 5px) calc(sin(var(--sine-progress)*3.1415*2) * 10px - 20px);
 }
 
+tr {
+    width: 90%;
+    align-self: center;
+    border: black;
+    border-style: solid;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    font-family: "Tolman";
+    font-size: 18pt;
+}
+
+h1 {
+    font-weight: normal;
+}
+
 @keyframes rainbow {
     0% {color:#E15353;}
     20% {color: #BED466;}
@@ -62,6 +77,10 @@ div[name="header"] {
     border-width: 5px;
     border-radius: 20px;
     box-shadow: inset 0px 0px 20px 0px rgba(0,0,0,0.4);
+}
+
+li {
+    padding-bottom: 0.5em;
 }
 
 header {
@@ -136,3 +155,9 @@ a:hover {
     font-family: "HomeVideo-Bold";
     src: url("HomeVideo-Bold.ttf");
 }
+
+@font-face {
+    font-family: "CSRubeus";
+    src: url("CSRubeus-Regular_demo.otf");
+}
+
